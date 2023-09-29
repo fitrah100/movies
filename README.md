@@ -12,5 +12,9 @@
   * go inside "movies" directory -> run "cd movies"
   * run "mvn clean install"
   * run "mvn spring-boot:run"
-   
+ 
+# Created by
+  * Name : Fitrah Pohan 
+  * Date : September 30, 2023
+    
  
