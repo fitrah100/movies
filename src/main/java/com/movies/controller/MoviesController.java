@@ -47,6 +47,28 @@ public class MoviesController {
 		   return new ResponseEntity<>("movie not found", HttpStatus.BAD_REQUEST);
 	   }
 	}
+	
+	@GetMapping("/Movies/search/{title}")
+	public ResponseEntity<Object> searchMovies(@PathVariable("title") String title) {
+	
+		   try {
+
+			List<Movies> movies =MoviesService.searchMoviesByTitle(title);
+			ObjectMapper obj = new ObjectMapper();
+			 
+			 if(movies.size()>0) {
+				 return new ResponseEntity<>(obj.writerWithDefaultPrettyPrinter().writeValueAsString(movies), HttpStatus.OK);
+			 } else {
+			    	throw new Exception();
+		   	 }	
+			
+		   } catch (Exception e) {
+				// TODO: handle exception
+			   return new ResponseEntity<>("movie not found", HttpStatus.BAD_REQUEST);
+		   }
+		   
+		
+	}
 	@GetMapping("/Movies")
 	public ResponseEntity<Object> getMovies() {
 	   List<Movies> movies =MoviesService.findAll();
